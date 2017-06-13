@@ -1,6 +1,23 @@
-var purchaseDate = new Date(2012,3,14);
+var currentTime = new Date();
+console.log("Hokay we running at " + currentTime + "!");
+
+//pick up the inputs from the page
+
+function getPurchaseDate () {
+    var calcForm = document.forms["depreciation"];
+    var purchaseDateInput = calcForm.elements["purchase-date"];
+    var purchaseDate = new Date();
+    if (purchaseDateInput.value != "") {
+        purchaseDate = Date(purchaseDateInput);
+    }
+    return purchaseDate;
+}
+
+//var purchaseDate = new Date();
+
+
 var theftDate = new Date(2017,4,28);
-var cost = 1311.72;
+var cost = 1650;
 var depreciationRate = 0.15;
 var salvage = 0;
 var depreciationTime = 0;
@@ -26,18 +43,16 @@ function calcDepreciationTime (purchaseDate, theftDate) {
 function calcSalvage(cost, depreciationRate, depreciationTime) {
     var depreciation = 0;
     var runningCost = cost - depreciation;
-    for (var i = 1; i <= depreciationTime; i++) {
+    for (var i = 1; i < depreciationTime; i++) {
         depreciation = runningCost * depreciationRate;
         runningCost = runningCost - depreciation;
         salvage = runningCost - depreciation;
     }
     console.log("Salvage amount is $" + salvage.toFixed(2));
-    console.log("Depreciation is $" + depreciation.toFixed(2));
     return salvage;
 }
 
 calcDepreciationTime(purchaseDate, theftDate);
 
 calcSalvage(cost, depreciationRate, depreciationTime);
-
 
