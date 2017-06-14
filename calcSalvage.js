@@ -52,7 +52,7 @@ function calcSalvage(cost, depreciationRate, depreciationTime) {
     return salvage;
 }
 
-calcDepreciationTime(purchaseDate, theftDate);
+//calcDepreciationTime(purchaseDate, theftDate);
 
 calcSalvage(cost, depreciationRate, depreciationTime);
 

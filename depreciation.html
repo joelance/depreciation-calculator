@@ -12,6 +12,7 @@
     <div id="content">
        <h1>Simple Depreciation</h1>
        <p>Enter the facts about an item to calculate its salvage amount:</p>
+       <div id="form-inputs">
        <form action="" id="depreciation" onsubmit="return false">
     <div>
       <label for="purchase-date">Purchase Date: </label>
@@ -33,8 +34,14 @@
       <button type="submit" onclick="calcSalvage(cost, depreciationRate, depreciationTime)">Calculate Salvage Amount</button>
     </div>
   </form>
-
+  </div>
+<div id="show-results">
+<p id="results-text">
+Your item's value is now 
+</p>
+</div>
     </div>
+
     <script src="calcSalvage.js"></script>
 </body>
 </html>
