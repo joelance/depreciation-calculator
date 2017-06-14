@@ -26,9 +26,9 @@ function calcDepreciationTime (purchaseDate, theftDate) {
     var ynew = theftDate.getFullYear();
     var mnew = theftDate.getMonth();
     var dnew = theftDate.getDate();
-    var yold = purchaseDate.getFullYear();
-    var mold = purchaseDate.getMonth();
-    var dold = purchaseDate.getDate();
+    var yold = getPurchaseDate().getFullYear();
+    var mold = getPurchaseDate().getMonth();
+    var dold = getPurchaseDate().getDate();
     depreciationTime = ynew - yold;
     if (mold > mnew) depreciationTime--;
     else {

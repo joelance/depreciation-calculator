@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Depreciation Calculator</title>
+
+    <link href="./styles.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div id="content">
+       <h1>Simple Depreciation</h1>
+       <p>Enter the facts about an item to calculate its salvage amount:</p>
+       <form action="" id="depreciation" onsubmit="return false">
+    <div>
+      <label for="purchase-date">Purchase Date: </label>
+      <input type="date" id="purchase-date" name="">
+    </div>
+    <div>
+      <label for="loss-date">Loss Date: </label>
+      <input type="date" id="loss-date" name="">
+    </div>
+    <div>
+      <label for="original-cost">Original Cost: </label>
+      <input type="number" min="0" step="50" id="original-cost" name="">
+    </div>
+    <div>
+      <label for="depreciationRate">Depreciation Rate: </label>
+      <input type="text" id="depreciationRate" name="">
+    </div>
+    <div class="button">
+      <button type="submit" onclick="calcSalvage(cost, depreciationRate, depreciationTime)">Calculate Salvage Amount</button>
+    </div>
+  </form>
+
+    </div>
+    <script src="calcSalvage.js"></script>
+</body>
+</html>
