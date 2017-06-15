@@ -1,9 +1,7 @@
 var currentTime = new Date();
 console.log("Hokay we running at " + currentTime + "!");
 
-//pick up the inputs from the page
-
-function getPurchaseDate () {
+/*function getPurchaseDate () {
     var calcForm = document.forms["depreciation"];
     var purchaseDateInput = calcForm.elements["purchase-date"];
     var purchaseDate = new Date();
@@ -11,24 +9,41 @@ function getPurchaseDate () {
         purchaseDate = Date(purchaseDateInput);
     }
     return purchaseDate;
-}
+}*/
 
-//var purchaseDate = new Date();
+//pick up the inputs from the page
+
+var purchaseDate = function () {
+    var calcForm = document.forms["depreciation"];
+    var purchaseDateInput = calcForm.elements["purchase-date"];
+    var purchaseDate = new Date();
+    if (purchaseDateInput.value != "") {
+        purchaseDate = purchaseDateInput.value;
+    }
+};
 
 
-var theftDate = new Date(2017,4,28);
+var lossDate = function () {
+    var calcForm = document.forms["depreciation"];
+    var lossDateInput = calcForm.elements["loss-date"];
+    var lossDate = new Date();
+    if (lossDateInput.value != "") {
+        lossDate = lossDateInput.value;
+    }
+};
+
 var cost = 1650;
 var depreciationRate = 0.15;
 var salvage = 0;
 var depreciationTime = 0;
 
-function calcDepreciationTime (purchaseDate, theftDate) {
-    var ynew = theftDate.getFullYear();
-    var mnew = theftDate.getMonth();
-    var dnew = theftDate.getDate();
-    var yold = getPurchaseDate().getFullYear();
-    var mold = getPurchaseDate().getMonth();
-    var dold = getPurchaseDate().getDate();
+function calcDepreciationTime (purchaseDate, lossDate) {
+    var ynew = lossDate.getFullYear();
+    var mnew = lossDate.getMonth();
+    var dnew = lossDate.getDate();
+    var yold = purchaseDate.getFullYear();
+    var mold = purchaseDate.getMonth();
+    var dold = purchaseDate.getDate();
     depreciationTime = ynew - yold;
     if (mold > mnew) depreciationTime--;
     else {
@@ -52,7 +67,7 @@ function calcSalvage(cost, depreciationRate, depreciationTime) {
     return salvage;
 }
 
-//calcDepreciationTime(purchaseDate, theftDate);
+calcDepreciationTime();
 
 calcSalvage(cost, depreciationRate, depreciationTime);
 
