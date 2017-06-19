@@ -13,31 +13,30 @@ console.log("Hokay we running at " + currentTime + "!");
 
 //pick up the inputs from the page
 
-var purchaseDate = function () {
-    var calcForm = document.forms["depreciation"];
-    var purchaseDateInput = calcForm.elements["purchase-date"];
-    var purchaseDate = new Date();
-    if (purchaseDateInput.value != "") {
-        purchaseDate = purchaseDateInput.value;
-    }
-};
+var calcForm = document.forms["depreciation"];
+
+var purchaseDate = new Date(calcForm.elements["purchase-date"].value);
+
+var lossDate = new Date(calcForm.elements["loss-date"].value);
+
+var cost = calcForm.elements["original-cost"].value;
+
+var depreciationRate = calcForm.elements["depreciation-rate"].value;
+
+// var salvage = 0;
+// var depreciationTime = 0;
 
 
-var lossDate = function () {
-    var calcForm = document.forms["depreciation"];
-    var lossDateInput = calcForm.elements["loss-date"];
-    var lossDate = new Date();
-    if (lossDateInput.value != "") {
-        lossDate = lossDateInput.value;
-    }
-};
+function calcDepreciationTime () {
 
-var cost = 1650;
-var depreciationRate = 0.15;
-var salvage = 0;
-var depreciationTime = 0;
+    if (supportsTypeDate) {
+    startDate = parseISODate(startDate);
+    endDate = parseISODate(endDate);
+  } else {
+    startDate = parseDMY(startDate);
+    endDate = parseDMY(endDate);
+  }
 
-function calcDepreciationTime (purchaseDate, lossDate) {
     var ynew = lossDate.getFullYear();
     var mnew = lossDate.getMonth();
     var dnew = lossDate.getDate();
@@ -55,9 +54,10 @@ function calcDepreciationTime (purchaseDate, lossDate) {
     return depreciationTime;
 }
 
-function calcSalvage(cost, depreciationRate, depreciationTime) {
+function calcSalvage(cost, depreciationRate) {
     var depreciation = 0;
     var runningCost = cost - depreciation;
+    var depreciationTime = calcDepreciationTime(purchaseDate, lossDate);
     for (var i = 1; i < depreciationTime; i++) {
         depreciation = runningCost * depreciationRate;
         runningCost = runningCost - depreciation;
@@ -67,7 +67,7 @@ function calcSalvage(cost, depreciationRate, depreciationTime) {
     return salvage;
 }
 
-calcDepreciationTime();
+//calcDepreciationTime();
 
-calcSalvage(cost, depreciationRate, depreciationTime);
+//calcSalvage(cost, depreciationRate, depreciationTime);
 

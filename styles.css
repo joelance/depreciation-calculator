@@ -11,8 +11,8 @@ h1 {
 
 form {
   /* Just to center the form on the page */
-  margin: 0 auto;
-  width: 400px;
+  /*margin: 0 auto;*/
+  width: 600px;
   /* To see the outline of the form */
   padding: 1em;
   border: 1em solid #CCCC00;
@@ -26,7 +26,7 @@ form div + div {
 label {
   /* To make sure that all labels have the same size and are properly aligned */
   display: inline-block;
-  width: 90px;
+  width: 135px;
   text-align: right;
 }
 

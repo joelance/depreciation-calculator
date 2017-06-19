@@ -15,20 +15,20 @@
        <div id="form-inputs">
        <form action="" id="depreciation" onsubmit="return false">
     <div>
-      <label for="purchase-date">Purchase Date: </label>
+      <label for="purchase-date">When did you purchase the item? </label>
       <input type="date" id="purchase-date" name="">
     </div>
     <div>
-      <label for="loss-date">Loss Date: </label>
+      <label for="loss-date">When was the item lost? </label>
       <input type="date" id="loss-date" name="">
     </div>
     <div>
-      <label for="original-cost">Original Cost: </label>
+      <label for="original-cost">How much did you pay for the item? </label>
       <input type="number" min="0" step="50" id="original-cost" name="">
     </div>
     <div>
-      <label for="depreciationRate">Depreciation Rate: </label>
-      <input type="text" id="depreciationRate" name="">
+      <label for="depreciationRate">Please enter the depreciation rate.* </label>
+      <input type="text" id="depreciation-rate" name="">
     </div>
     <div class="button">
       <button type="submit" onclick="calcSalvage(cost, depreciationRate, depreciationTime)">Calculate Salvage Amount</button>
@@ -37,7 +37,7 @@
   </div>
 <div id="show-results">
 <p id="results-text">
-Your item's value is now 
+Your item's value is now <span id-="salvage-value"></span>
 </p>
 </div>
     </div>
