@@ -1,31 +1,13 @@
 var currentTime = new Date();
 console.log("Hokay we running at " + currentTime + "!");
 
-/*function getPurchaseDate () {
-    var calcForm = document.forms["depreciation"];
-    var purchaseDateInput = calcForm.elements["purchase-date"];
-    var purchaseDate = new Date();
-    if (purchaseDateInput.value != "") {
-        purchaseDate = Date(purchaseDateInput);
-    }
-    return purchaseDate;
-}*/
-
-//pick up the inputs from the page
-
 var calcForm = document.forms["depreciation"];
-
-
-
-
 var salvage = 0;
 var depreciationTime = 0;
 
-
-
 function calcDepreciationTime () {
-    var purchaseDate = new Date(calcForm.elements["purchase-date"].value);
     var lossDate = new Date(calcForm.elements["loss-date"].value);
+    var purchaseDate = new Date(calcForm.elements["purchase-date"].value);
     var ynew = lossDate.getFullYear();
     var mnew = lossDate.getMonth();
     var dnew = lossDate.getDate();
@@ -46,16 +28,19 @@ function calcDepreciationTime () {
 function calcSalvage() {
     var depreciation = 0;
     var cost = calcForm.elements["original-cost"].value;
-    var depreciationRate = calcForm.elements["depreciation-rate"].value;
-    var runningCost = cost - depreciation;
+    var depreciationRateInput = calcForm.elements["depreciation-rate"].value;
+    var depreciationRate = depreciationRateInput / 100;
+    var runningCost = cost;
     var depreciationTime = calcDepreciationTime();
     for (var i = 1; i < depreciationTime; i++) {
         depreciation = runningCost * depreciationRate;
         runningCost = runningCost - depreciation;
-        salvage = runningCost - depreciation;
-    }
+        }
+    salvage = runningCost - depreciation;
+
     console.log("Salvage amount is $" + salvage.toFixed(2));
-    return salvage;
+    var salvageValue = document.getElementById("salvage-value");
+    salvageValue.innerHTML = (salvage.toFixed(2));
 }
 
 //calcDepreciationTime();
