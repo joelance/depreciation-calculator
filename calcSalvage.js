@@ -32,7 +32,7 @@ function calcSalvage() {
     var depreciationRate = depreciationRateInput / 100;
     var runningCost = cost;
     var depreciationTime = calcDepreciationTime();
-    for (var i = 1; i < depreciationTime; i++) {
+    for (var i = 1; i <= depreciationTime; i++) {
         depreciation = runningCost * depreciationRate;
         runningCost = runningCost - depreciation;
         }
